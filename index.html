@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <title>屬於妳的專屬驚喜</title>
+    <style>
+        body { font-family: "微軟正黑體", sans-serif; background-color: #fce4ec; text-align: center; padding-top: 100px; }
+        #passwordPage, #surprisePage { display: none; }
+        h1 { color: #c2185b; }
+        input { padding: 10px; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; background-color: #f06292; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .fade-in { opacity: 0; animation: fadeIn 2s ease-in forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .heart { font-size: 30px; animation: bounce 1s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    </style>
+</head>
+<body>
+    <div id="passwordPage">
+        <h1>🎁 有一份小驚喜在等妳</h1>
+        <p>請輸入一組8位數字密碼<br />(提示：一個屬於妳的日子)</p>
+        <input type="password" id="passwordInput" placeholder="例如19981101" />
+        <br /><br />
+        <button onclick="checkPassword()">解鎖</button>
+        <p id="errorMsg" style="color:red;"></p>
+    </div>
+
+    <div id="surprisePage">
+        <h1 class="fade-in">給今天要上小夜的妳，加油喔!!!</h1>
+        <p class="fade-in">屬於理工男的浪漫~~<span class="heart">❤️</span></p>
+        <div class="fade-in">
+            <iframe width="300" height="169" src="https://www.youtube.com/embed/bu7nU9Mhpyo?autoplay=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("passwordPage").style.display = "block";
+        function checkPassword() {
+            var pwd = document.getElementById("passwordInput").value;
+            if (pwd === "19981101") {
+                document.getElementById("passwordPage").style.display = "none";
+                document.getElementById("surprisePage").style.display = "block";
+            } else {
+                document.getElementById("errorMsg").innerText = "密碼錯囉，再想想看喔！";
+            }
+        }
+    </script>
+</body>
+</html>
